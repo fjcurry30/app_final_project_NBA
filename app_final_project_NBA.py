@@ -85,7 +85,7 @@ st.subheader('Box chart of the percentage of NBA rookies from the United States 
 minmum = df_oringin4.draft_year.min() 
 maximum = df_oringin4.draft_year.max()
 fig, ax = plt.subplots()
-pop_year_filter = st.slider('Select one year you want to check', minmum, maximum, maximum)
+pop_year_filter = st.slider('Select one year you want to check', 1963, 2021, 2021)
 df_year = df_oringin4[df_oringin4.draft_year == pop_year_filter]
 df_year.player_height.plot.box(ax=ax)
 'Question'
