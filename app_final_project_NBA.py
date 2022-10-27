@@ -29,6 +29,13 @@ e = list(set(d))
 
 st.subheader('The chart below is sorted by drafted rounds and numbers by default')
 
+form = st.form("name_form")
+name_filter = form.text_input('Name (enter ALL to reset)', 'ALL')
+form.form_submit_button("Apply")
+
+if name_filter != 'ALL':
+    df = df[df.player_name == name_filter]
+
 year_filter = st.sidebar.multiselect('Select one year you want to check', c, latest_year)
 if len(year_filter) >= 2:
     df = df[df.draft_year.isin(year_filter)].sort_values(['draft_year', 'draft_round', 'draft_number'], ascending=[False, True, True])
