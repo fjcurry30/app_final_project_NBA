@@ -67,27 +67,6 @@ st.text('Does the NBA Draft have anything to do with age?')
 st.text('This line chart has some erro. As you can see there are missing data from 1964 to 1975.\nBesides, there is only one data for year 1963 which makes the average age inaccurate.\nBut, it is easy for us to find that  NBA draft picks get younger and younger!!!')
 st.pyplot(fig)
 
-st.subheader('Line chart average points scored by NBA rookies each year:')
-fig, ax = plt.subplots()
-df_averge_pts = df_oringin4.groupby('draft_year')['pts'].sum() / df_oringin4.draft_year.value_counts()
-df_averge_pts.plot(ax=ax, linestyle='dotted', marker='s', color='blue')
-ax.set_xlabel('Year')
-ax.set_ylabel('Averge Points')
-'Conclusion'
-st.text('From the chart below, we can see that before 1982, NBA rookies\' averages generally had lower scores.\nEspecially in 1979, the average scores of NBA rookies reached a minimum of 0.6 points.\nThe average scores of NBA rookies increased sharply in 1982, and has remained between 7 and 11 points since 1982.\nWe can see from this chart that the average score of NBA rookies has continued to improve over time, which can also indirectly indicate that the basketball training system is becoming more and more mature.\nMost people have also improved their basketball skills.')
-st.pyplot(fig)
-
-
-st.subheader('Bar chart of the percentage of NBA rookies from the United States each year:')
-fig, ax = plt.subplots()
-df_1 = df_oringin4[df_oringin4.country == 'USA']
-df_2 = df_1.draft_year.value_counts() / df_oringin4.draft_year.value_counts()
-df_2.plot.bar(ax=ax, color='red')
-'Conclusion'
-st.text('The y axis of the bar chart shows the percentage of NBA rookies from the United States per year, and the x axis shows the year.\nIn general, a large percentage of NBA rookies each year are from the United States.\nBut in recent years, NBA rookies have become more multinational than in previous decades, with more players from abroad entering the NBA draft.')
-st.pyplot(fig)
-
-
 st.subheader('Box chart of the percentage of NBA rookies from the United States each year:')
 minmum = df_oringin4.draft_year.min() 
 maximum = df_oringin4.draft_year.max()
@@ -115,12 +94,34 @@ st.text('In the previous question, we found that the average NBA draft player is
 st.text('According to the bar chart below, we can see that the height of the NBA top draft pick every year is about two meters.\nFew top NBA draft pick are shorter than 2 meters.\nIt also confirms what we already suspected -- that the NBA prefers players who are about two feet tall')
 st.pyplot(fig)
 
+st.subheader('Line chart average points scored by NBA rookies each year:')
+fig, ax = plt.subplots()
+df_averge_pts = df_oringin4.groupby('draft_year')['pts'].sum() / df_oringin4.draft_year.value_counts()
+df_averge_pts.plot(ax=ax, linestyle='dotted', marker='s', color='blue')
+ax.set_xlabel('Year')
+ax.set_ylabel('Averge Points')
+'Conclusion'
+st.text('From the chart below, we can see that before 1982, NBA rookies\' averages generally had lower scores.\nEspecially in 1979, the average scores of NBA rookies reached a minimum of 0.6 points.\nThe average scores of NBA rookies increased sharply in 1982, and has remained between 7 and 11 points since 1982.\nWe can see from this chart that the average score of NBA rookies has continued to improve over time, which can also indirectly indicate that the basketball training system is becoming more and more mature.\nMost people have also improved their basketball skills.')
+st.pyplot(fig)
+
+
+st.subheader('Bar chart of the percentage of NBA rookies from the United States each year:')
+fig, ax = plt.subplots()
+df_1 = df_oringin4[df_oringin4.country == 'USA']
+df_2 = df_1.draft_year.value_counts() / df_oringin4.draft_year.value_counts()
+df_2.plot.bar(ax=ax, color='red')
+'Conclusion'
+st.text('The y axis of the bar chart shows the percentage of NBA rookies from the United States per year, and the x axis shows the year.\nIn general, a large percentage of NBA rookies each year are from the United States.\nBut in recent years, NBA rookies have become more multinational than in previous decades, with more players from abroad entering the NBA draft.')
+st.pyplot(fig)
+
 st.subheader('Bar chart of the net rating of the top pick in the NBA draft each year:')
 fig, ax = plt.subplots()
 df_every_number_one.net_rating.plot.bar(ax=ax, color='green')
 ax.set_xticklabels(df_every_number_one.draft_year)
 ax.set_xlabel('Top pick in the NBA draft every year')
 ax.set_ylabel('Height')
+'Question'
+st.text('Do the top pick in the NBA draft have excellent performances every year?')
 'Conclusion'
 st.text('As the NBA is the best basketball league in the world, we all take it for granted that the top pick in the NBA draft each year will give us amazing performance.\nBut when we look at the bar chart below, we are surprised to find that nearly half of the top pick in the NBA draft have poor performance.\nIt also tells us that being the top pick in the NBA draft every year doesn\'t always mean being No. 1. Just as an old saying goes, \"There is a universe outside everyone.\"')
 st.pyplot(fig)
