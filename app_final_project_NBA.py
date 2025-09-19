@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-plt.style.use('seaborn')
+plt.style.use("seaborn-v0_8-darkgrid")
 
 df_oringin1 = pd.read_csv('all_seasons.csv')
 df_oringin2 = df_oringin1.drop(['num', 'oreb_pct', 'dreb_pct', 'usg_pct', 'ts_pct', 'ast_pct'], axis=1)
